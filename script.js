@@ -1,7 +1,8 @@
 var carditems=document.querySelector("#carditems");
 let currentSong = new Audio();
 var cards=``;
-
+const basepath= window.location.origin + window.location.pathname.split('/')[0];
+console.log("Base path : "+basepath)
 
 
 function secondsToMinutesSeconds(seconds) {
@@ -20,7 +21,8 @@ function secondsToMinutesSeconds(seconds) {
 
 
 async function getCards(){
-    let audiolist= await fetch("http://127.0.0.1:5500/audio/");
+    console.log(`${basepath}/audio/`)
+    let audiolist= await fetch(`${basepath}/audio/`);
     let response = await audiolist.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -56,7 +58,7 @@ async function getCards(){
 
 
 async function getsongs(){
-    let audiolist= await fetch("http://127.0.0.1:5500/audio/");
+    let audiolist= await fetch(`${basepath}/audio/`);
     let response = await audiolist.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -108,6 +110,10 @@ const playMusic = (track, pause = false) => {
     document.querySelector(".playbar").style.height="17%";
     document.querySelector(".playbar").style.display="flex";
     
+}
+
+function logout(){
+    localStorage.removeItem('userlogged')
 }
 
 
@@ -188,24 +194,29 @@ async function main(){
     
     // check if user is logged in or no
     var retuser= localStorage.getItem('userlogged');
-    localStorage.removeItem('userlogged');
-    var navright=document.querySelector("#navright");
+    var navrighth1=document.querySelector("#navright>h1");
+    var navrightlogbut=document.querySelector("#navright .login");
+    var navrightoutbut=document.querySelector("#navright .logout");
     var cards=document.querySelectorAll("#card");
     var library=document.querySelectorAll(".songslist ul li");
     // console.log(library)
     
-    // if(!retuser){
-    //     cards.forEach((elem)=>{
-    //         elem.style.display="none";
-    //     })
-    //     library.forEach((elem)=>{
-    //         elem.style.display="none";
-    //     })
-    //     carditems.textContent="Please Login or register";
-    //     console.log(cards,navright)
-    // }else{
-    //     navright.style.display="none";
-    // }
+    if(!retuser){
+        cards.forEach((elem)=>{
+            elem.style.display="none";
+        })
+        library.forEach((elem)=>{
+            elem.style.display="none";
+        })
+        navrightoutbut.style.display="none";
+        
+        carditems.textContent="Please Login or register";
+        console.log(cards,navright)
+    }else{
+        navrightoutbut.style.display="block";
+        navrighth1.style.display="none";
+        navrightlogbut.style.display="none";
+    }
     
     
 }

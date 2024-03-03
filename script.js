@@ -1,10 +1,11 @@
 var carditems=document.querySelector("#carditems");
+
 let playlist=document.querySelector("#playlist")
 let songs=[];
 let currentSong = new Audio();
 var cards=``;
 const basepath= window.location.origin + window.location.pathname.split('/')[0];
-
+console.log(basepath)
 
 
 function secondsToMinutesSeconds(seconds) {

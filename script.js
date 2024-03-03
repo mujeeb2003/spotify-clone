@@ -24,7 +24,7 @@ function secondsToMinutesSeconds(seconds) {
 
 
 async function getCards(){
-    
+    console.log("GETCARDS")
     let audiolist= await fetch(`./playlist/`);
     let response = await audiolist.text();
     let div = document.createElement("div")
@@ -110,6 +110,7 @@ async function getCards(){
 
 
 async function getsongs(){
+    console.log("GETCARDS")
     let audiolist= await fetch(`./audio/`);
     let response = await audiolist.text();
     let div = document.createElement("div")

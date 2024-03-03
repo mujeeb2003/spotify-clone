@@ -25,7 +25,7 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getCards(){
     
-    let audiolist= await fetch(`${basepath}/playlist/`);
+    let audiolist= await fetch(`./playlist/`);
     let response = await audiolist.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -56,7 +56,7 @@ async function getCards(){
             let title=currenttarget.querySelector("h1")
             let img=currenttarget.querySelector("img").src.split("/playlist_images")[1]
             
-            let playlistaudio= await fetch(`${basepath}/playlist/${title.textContent}`);
+            let playlistaudio= await fetch(`./playlist/${title.textContent}`);
             let res = await playlistaudio.text();
             let div = document.createElement("div")
             div.innerHTML = res;
@@ -110,7 +110,7 @@ async function getCards(){
 
 
 async function getsongs(){
-    let audiolist= await fetch(`${basepath}/audio/`);
+    let audiolist= await fetch(`./audio/`);
     let response = await audiolist.text();
     let div = document.createElement("div")
     div.innerHTML = response;

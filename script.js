@@ -34,6 +34,7 @@ async function getCards(){
     let div = document.createElement("div")
     div.innerHTML = response;
     let as = div.getElementsByTagName("a")
+    console.log(as)
     let playlists = []
     for (let index = 3; index < as.length; index++) {
         const element = as[index];

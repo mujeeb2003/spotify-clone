@@ -30,6 +30,7 @@ async function getCards(){
     console.log("GETCARDS")
     let audiolist= await fetch(`${baseUrl}/playlist/`);
     let response = await audiolist.text();
+    console.log(audiolist,response)
     let div = document.createElement("div")
     div.innerHTML = response;
     let as = div.getElementsByTagName("a")

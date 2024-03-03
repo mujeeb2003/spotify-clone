@@ -36,7 +36,7 @@ async function getCards(){
     let as = div.getElementsByTagName("a")
     console.log(as)
     let playlists = []
-    for (let index = 3; index < as.length; index++) {
+    for (let index = 1; index < as.length; index++) {
         const element = as[index];
         playlists.push(element.href.split(`/playlist/`)[1]);
     }

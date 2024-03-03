@@ -71,8 +71,8 @@ async function getCards(){
             for (let index = 0; index < as.length; index++) {
                 const element = as[index];
                 if (element.href.endsWith(".mp3")) {
-                    // songs.push(element.title.split("/"))
-                    console.log(element.title.split("/"))
+                    songs.push(element.title.split("/")[3])
+                    console.log(element.title.split("/")[3])
                 }
             }
             console.log(songs)

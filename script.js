@@ -61,7 +61,7 @@ async function getCards(){
             // get the children of the elem clicked on
             let title=currenttarget.querySelector("h1")
             let img=currenttarget.querySelector("img").src.split("/playlist_images")[1]
-            
+            console.log(img)
             let playlistaudio= await fetch(`${baseUrl}/playlist/${title.textContent}`);
             let res = await playlistaudio.text();
             let div = document.createElement("div")

@@ -41,6 +41,7 @@ async function getCards(){
         playlists.push(element.href.split(`/playlist/`)[1]);
     }
     // 
+
     
     for (const playlist of playlists) {
         cards+=` <div id="card">
@@ -74,7 +75,7 @@ async function getCards(){
                     
                 }
             }
-            
+            console.log(songs)
             
             
             // set the card display to none
@@ -85,6 +86,8 @@ async function getCards(){
             let listing = playlist.querySelector('#list ul');
             listing.innerHTML = "";
             for (const song of songs) {
+                console.log(title.textContent)
+                console.log(first)
                 listing.innerHTML = listing.innerHTML + `
                 <li><img class="invert" width="34" src="img/music.svg" alt="">
                 <div class="info">

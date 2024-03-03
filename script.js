@@ -4,9 +4,12 @@ let playlist=document.querySelector("#playlist")
 let songs=[];
 let currentSong = new Audio();
 var cards=``;
-const basepath= window.location.origin + window.location.pathname.split('/')[0];
-console.log(basepath)
 
+const baseUrl = window.location.origin;
+
+// Construct the absolute path to the audio folder
+const audioFolder = `${baseUrl}/audio/`
+console.log(audioFolder);
 
 function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
@@ -25,7 +28,7 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getCards(){
     console.log("GETCARDS")
-    let audiolist= await fetch(`./playlist/`);
+    let audiolist= await fetch(`${baseUrl}/playlist/`);
     let response = await audiolist.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -56,7 +59,7 @@ async function getCards(){
             let title=currenttarget.querySelector("h1")
             let img=currenttarget.querySelector("img").src.split("/playlist_images")[1]
             
-            let playlistaudio= await fetch(`./playlist/${title.textContent}`);
+            let playlistaudio= await fetch(`${baseUrl}/playlist/${title.textContent}`);
             let res = await playlistaudio.text();
             let div = document.createElement("div")
             div.innerHTML = res;
@@ -111,7 +114,7 @@ async function getCards(){
 
 async function getsongs(){
     console.log("GETCARDS")
-    let audiolist= await fetch(`./audio/`);
+    let audiolist= await fetch(`${baseUrl}/audio/`);
     let response = await audiolist.text();
     let div = document.createElement("div")
     div.innerHTML = response;
